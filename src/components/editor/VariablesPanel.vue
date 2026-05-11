@@ -6,27 +6,39 @@ const store = useProjectStore();
 
 function parseDefaultValue(type: VariableType, raw: string) {
   if (type === "number") return Number(raw || 0);
-  if (type === "boolean") return raw === "true";
+  if (type === "boolean") {
+    const v = raw.trim().toLowerCase();
+    return v === "true" || v === "1" || v === "да" || v === "yes";
+  }
   return raw;
 }
 </script>
 
 <template>
-  <section class="rounded-xl border border-slate-800 bg-slate-900/60 p-4">
-    <div class="mb-3 flex items-center justify-between">
-      <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-300">Variables</h2>
-      <button class="rounded bg-indigo-600 px-2 py-1 text-xs text-white" @click="store.addVariable">Add</button>
+  <section class="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-4 shadow-lg shadow-black/15 ring-1 ring-white/[0.05] backdrop-blur-sm">
+    <div class="mb-3 flex items-center justify-between gap-2">
+      <h2 class="text-sm font-semibold text-slate-200">Переменные</h2>
+      <button
+        type="button"
+        class="rounded-lg bg-violet-600 px-2.5 py-1.5 text-xs font-medium text-white hover:bg-violet-500"
+        @click="store.addVariable"
+      >
+        Добавить
+      </button>
     </div>
 
+    <p v-if="!store.project.variables.length" class="text-xs text-slate-500">Нет переменных. Они попадут в экспорт как default в Ren'Py.</p>
+
     <div class="space-y-2">
-      <div v-for="variable in store.project.variables" :key="variable.id" class="grid grid-cols-4 gap-1">
+      <div v-for="variable in store.project.variables" :key="variable.id" class="grid grid-cols-[1fr_auto_1fr_auto] items-center gap-1.5">
         <input
-          class="rounded border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-100"
+          class="min-w-0 rounded-lg border border-white/[0.08] bg-black/25 px-2 py-1.5 text-xs text-slate-100 outline-none focus:ring-2 focus:ring-violet-500/30"
+          title="Имя в коде (латиница без пробелов)"
           :value="variable.key"
           @input="store.updateVariable(variable.id, { key: ($event.target as HTMLInputElement).value })"
         />
         <select
-          class="rounded border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-100"
+          class="rounded-lg border border-white/[0.08] bg-black/25 px-2 py-1.5 text-xs text-slate-100"
           :value="variable.type"
           @change="
             store.updateVariable(variable.id, {
@@ -34,12 +46,13 @@ function parseDefaultValue(type: VariableType, raw: string) {
             })
           "
         >
-          <option value="number">number</option>
-          <option value="boolean">boolean</option>
-          <option value="string">string</option>
+          <option value="number">число</option>
+          <option value="boolean">да/нет</option>
+          <option value="string">строка</option>
         </select>
         <input
-          class="rounded border border-slate-700 bg-slate-950 px-2 py-1 text-xs text-slate-100"
+          class="min-w-0 rounded-lg border border-white/[0.08] bg-black/25 px-2 py-1.5 text-xs text-slate-100 outline-none focus:ring-2 focus:ring-violet-500/30"
+          :placeholder="variable.type === 'boolean' ? 'true / false' : ''"
           :value="String(variable.defaultValue)"
           @input="
             store.updateVariable(variable.id, {
@@ -47,7 +60,14 @@ function parseDefaultValue(type: VariableType, raw: string) {
             })
           "
         />
-        <button class="rounded bg-rose-700 px-2 py-1 text-xs text-white" @click="store.removeVariable(variable.id)">x</button>
+        <button
+          type="button"
+          class="rounded-lg bg-rose-600/90 px-2 py-1.5 text-xs text-white hover:bg-rose-500"
+          title="Удалить"
+          @click="store.removeVariable(variable.id)"
+        >
+          ×
+        </button>
       </div>
     </div>
   </section>

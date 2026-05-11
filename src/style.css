@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
+/* Шрифт по умолчанию для Tailwind (font-sans) и наследование в приложении */
+@theme {
+  --font-sans: "Merriweather", ui-sans-serif, system-ui, sans-serif;
+}
+
 body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }

@@ -22,7 +22,7 @@ function uid(prefix: string): string {
 function createEmptyNode(title?: string): SceneNode {
   return {
     id: uid("node"),
-    title: title ?? "New Node",
+    title: title ?? "Новый узел",
     characterName: "",
     text: "",
     backgroundAssetId: "",
@@ -33,10 +33,10 @@ function createEmptyNode(title?: string): SceneNode {
 }
 
 function createDefaultProject(): StoryProject {
-  const firstNode = createEmptyNode("Start");
+  const firstNode = createEmptyNode("Старт");
   return {
     id: uid("project"),
-    title: "My Visual Novel",
+    title: "Моя визуальная новелла",
     startNodeId: firstNode.id,
     nodes: [firstNode],
     variables: [],
@@ -94,7 +94,7 @@ export const useProjectStore = defineStore("project", () => {
   }
 
   function addNode() {
-    const node = createEmptyNode(`Node ${project.value.nodes.length + 1}`);
+    const node = createEmptyNode(`Сцена ${project.value.nodes.length + 1}`);
     project.value.nodes.push(node);
     selectedNodeId.value = node.id;
     touch();
@@ -150,7 +150,7 @@ export const useProjectStore = defineStore("project", () => {
     const fallbackTarget = project.value.nodes.find((item) => item.id !== nodeId)?.id ?? nodeId;
     const choice: Choice = {
       id: uid("choice"),
-      text: "New choice",
+      text: "Новый вариант",
       targetNodeId: fallbackTarget,
       conditions: [],
       effects: []
@@ -265,13 +265,13 @@ export const useProjectStore = defineStore("project", () => {
   function importProjectJson(json: string): { ok: boolean; message: string } {
     try {
       const parsed = JSON.parse(json) as StoryProject;
-      if (!parsed.nodes?.length) return { ok: false, message: "Project JSON has no nodes." };
+      if (!parsed.nodes?.length) return { ok: false, message: "В JSON нет узлов сцен." };
       project.value = parsed;
       selectedNodeId.value = parsed.startNodeId || parsed.nodes[0].id;
       touch();
-      return { ok: true, message: "Project imported." };
+      return { ok: true, message: "Проект загружен." };
     } catch {
-      return { ok: false, message: "Invalid JSON." };
+      return { ok: false, message: "Некорректный JSON." };
     }
   }
 
