@@ -45,14 +45,8 @@ __VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.d
     ...{ class: "mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between" },
 });
 __VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({});
-__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
-    ...{ class: "text-xs font-medium uppercase tracking-widest text-violet-300/80" },
-});
 __VLS_asFunctionalElement(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({
     ...{ class: "mt-1 bg-gradient-to-r from-white via-violet-100 to-slate-200 bg-clip-text text-2xl font-semibold tracking-tight text-transparent" },
-});
-__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
-    ...{ class: "mt-1 max-w-xl text-sm text-slate-400/95" },
 });
 __VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({
     ...{ class: "grid gap-3 sm:grid-cols-2" },
@@ -71,7 +65,7 @@ __VLS_asFunctionalElement(__VLS_intrinsicElements.input)({
     value: (__VLS_ctx.store.project.title),
 });
 __VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({
-    ...{ class: "flex items-center rounded-xl border border-white/[0.06] bg-black/15 px-3 py-2.5 text-xs text-slate-400/90" },
+    ...{ class: "mt-auto h-fit rounded-xl border border-white/[0.06] bg-black/15 px-3 py-2.5 text-xs text-slate-400/90" },
 });
 __VLS_asFunctionalElement(__VLS_intrinsicElements.span, __VLS_intrinsicElements.span)({
     ...{ class: "text-slate-500" },
@@ -187,11 +181,6 @@ const __VLS_13 = __VLS_12({}, ...__VLS_functionalComponentArgsRest(__VLS_12));
 /** @type {__VLS_StyleScopedClasses['sm:flex-row']} */ ;
 /** @type {__VLS_StyleScopedClasses['sm:items-end']} */ ;
 /** @type {__VLS_StyleScopedClasses['sm:justify-between']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-xs']} */ ;
-/** @type {__VLS_StyleScopedClasses['font-medium']} */ ;
-/** @type {__VLS_StyleScopedClasses['uppercase']} */ ;
-/** @type {__VLS_StyleScopedClasses['tracking-widest']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-violet-300/80']} */ ;
 /** @type {__VLS_StyleScopedClasses['mt-1']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-gradient-to-r']} */ ;
 /** @type {__VLS_StyleScopedClasses['from-white']} */ ;
@@ -202,10 +191,6 @@ const __VLS_13 = __VLS_12({}, ...__VLS_functionalComponentArgsRest(__VLS_12));
 /** @type {__VLS_StyleScopedClasses['font-semibold']} */ ;
 /** @type {__VLS_StyleScopedClasses['tracking-tight']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-transparent']} */ ;
-/** @type {__VLS_StyleScopedClasses['mt-1']} */ ;
-/** @type {__VLS_StyleScopedClasses['max-w-xl']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-sm']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-slate-400/95']} */ ;
 /** @type {__VLS_StyleScopedClasses['grid']} */ ;
 /** @type {__VLS_StyleScopedClasses['gap-3']} */ ;
 /** @type {__VLS_StyleScopedClasses['sm:grid-cols-2']} */ ;
@@ -231,8 +216,8 @@ const __VLS_13 = __VLS_12({}, ...__VLS_functionalComponentArgsRest(__VLS_12));
 /** @type {__VLS_StyleScopedClasses['focus:border-violet-400/35']} */ ;
 /** @type {__VLS_StyleScopedClasses['focus:ring-2']} */ ;
 /** @type {__VLS_StyleScopedClasses['focus:ring-violet-500/25']} */ ;
-/** @type {__VLS_StyleScopedClasses['flex']} */ ;
-/** @type {__VLS_StyleScopedClasses['items-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['mt-auto']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-fit']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['border']} */ ;
 /** @type {__VLS_StyleScopedClasses['border-white/[0.06]']} */ ;
